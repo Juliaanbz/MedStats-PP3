@@ -31,7 +31,7 @@
 
             <!-- KPIs rápidos -->
             <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-7xl mx-auto">
-                
+
                 <!-- Pacientes activos -->
                 <div class="bg-white rounded-2xl p-6 flex items-center gap-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                     <div class="p-3 bg-blue-50 rounded-xl">
@@ -188,6 +188,28 @@
                     </div>
                 </a>
                 @endif
+
+                <!-- CARD 6: Libro de Estudios médicos -->
+                @if(Auth::user()->hasAccess('estudios_medicos'))
+<a href="{{ route('estudios_medicos.index') }}"
+    class="flex rounded-2xl overflow-hidden transform hover:scale-[1.02] transition duration-300 bg-white h-40 text-decoration-none">
+    <div class="w-1/2 p-6 flex flex-col justify-between">
+        <div>
+            <h2 class="text-2xl font-bold bg-gradient-to-r from-[#1B7D8F] via-[#2BA8A0] to-[#245360] text-transparent bg-clip-text drop-shadow-md flex items-center gap-2">
+                <img src="{{ asset('assets/img/logo-san-felipe.png') }}" alt="Hospital San Felipe" class="w-6 h-6">
+                Estudios médicos
+            </h2>
+            <p class="text-gray-500 mt-2 text-sm">Registro e historial de estudios médicos realizados</p>
+        </div>
+        <span class="text-blue-600 font-semibold mt-4">Ver más →</span>
+    </div>
+    <div class="w-1/2 flex items-center justify-center">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=300&q=80"
+             alt="Estudios Médicos"
+             class="h-24 w-32 object-cover rounded-lg">
+    </div>
+</a>
+@endif
             </div>
         </main>
     </div>

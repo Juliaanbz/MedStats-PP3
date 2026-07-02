@@ -10,9 +10,9 @@
                 </h2>
                 <p class="text-gray-500 mt-1">Control de inventario y consumo de insumos</p>
             </div>
-            <a href="{{ route('cirugias.estadisticas') }}" 
+            <a href="{{ route('cirugias.estadisticas') }}"
                class="btn bg-white text-gray-700 shadow-sm hover:shadow-md border border-gray-200 d-flex align-items-center px-4 py-2 rounded-lg transition-all">
-                <i class="bi bi-activity me-2 text-[#1B7D8F]"></i> 
+                <i class="bi bi-activity me-2 text-[#1B7D8F]"></i>
                 <span class="font-medium">Estadísticas de Cirugías</span>
             </a>
         </div>
@@ -25,26 +25,26 @@
         @endif
 
         {{-- Filtros --}}
-        <form method="GET" action="{{ route('stocks.estadisticasstock') }}" 
+        <form method="GET" action="{{ route('stocks.estadisticasstock') }}"
               class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-5 transition-all hover:shadow-md">
             <div class="row g-4 align-items-end">
                 <div class="col-md-4">
                     <label for="desde" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
                         Desde
                     </label>
-                    <input type="date" name="desde" id="desde" value="{{ request('desde') }}" 
+                    <input type="date" name="desde" id="desde" value="{{ request('desde') }}"
                            class="form-control bg-gray-50 border-gray-200 rounded-lg focus:ring-[#1B7D8F] focus:border-[#1B7D8F] text-gray-700">
                 </div>
                 <div class="col-md-4">
                     <label for="hasta" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
                         Hasta
                     </label>
-                    <input type="date" name="hasta" id="hasta" value="{{ request('hasta') }}" 
+                    <input type="date" name="hasta" id="hasta" value="{{ request('hasta') }}"
                            class="form-control bg-gray-50 border-gray-200 rounded-lg focus:ring-[#1B7D8F] focus:border-[#1B7D8F] text-gray-700">
                 </div>
                 <div class="col-md-4">
-                    <button type="submit" 
-                            class="btn w-100 rounded-lg d-flex align-items-center justify-content-center gap-2 text-white font-medium shadow-md hover:shadow-lg transition-all" 
+                    <button type="submit"
+                            class="btn w-100 rounded-lg d-flex align-items-center justify-content-center gap-2 text-white font-medium shadow-md hover:shadow-lg transition-all"
                             style="background: linear-gradient(135deg, #1B7D8F 0%, #245360 100%);">
                         <i class="bi bi-funnel-fill"></i> Filtrar
                     </button>
@@ -192,8 +192,8 @@
                             <p class="text-sm text-gray-500 mb-0">Stock inactivo por más de {{ $umbralDias }} días</p>
                         </div>
                         <form method="GET" action="{{ route('stocks.estadisticasstock') }}" class="d-flex gap-2 align-items-center">
-                            <input type="number" name="dias" id="dias" 
-                                   class="form-control form-control-sm w-20 border-gray-200 rounded-lg text-center" 
+                            <input type="number" name="dias" id="dias"
+                                   class="form-control form-control-sm w-20 border-gray-200 rounded-lg text-center"
                                    value="{{ request('dias', 30) }}" min="1">
                             <button type="submit" class="btn btn-sm btn-light border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg">
                                 Aplicar

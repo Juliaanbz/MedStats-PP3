@@ -213,6 +213,7 @@
                 ['route' => 'pacientes.index', 'title' => 'Pacientes', 'icon' => 'users', 'access' => 'pacientes'],
                 ['route' => 'camas.index', 'title' => 'Camas', 'icon' => 'bed', 'access' => 'camas'],
                 ['route' => 'cirugias.index', 'title' => 'Cirugías', 'icon' => 'activity', 'access' => 'cirugias'],
+                ['route' => 'estudios_medicos.index', 'title' => 'Estudios Médicos', 'icon' => 'file-text', 'access' => 'estudios_medicos'],
                 ['route' => 'ajustes', 'title' => 'Ajustes', 'icon' => 'settings', 'access' => null], // Visible para todos
             ];
         @endphp

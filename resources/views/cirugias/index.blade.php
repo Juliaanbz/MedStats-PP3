@@ -165,11 +165,7 @@
             </div>
 
             <!-- Footer de la Tabla (Paginación custom si fuera necesario, o info) -->
-            <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-between items-center">
-                <div class="text-xs text-gray-500" id="tableInfo"></div>
-                <div id="tablePagination"></div>
-            </div>
-        </div>
+            <div id="mis-controles-tabla"></div>
 
         <!-- Botones de Acción -->
         <div class="mt-6 flex flex-wrap gap-3 justify-start">
@@ -201,7 +197,7 @@
 
         table.dataTable.no-footer { border-bottom: none !important; }
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #1B7D8F !important;
+            background: #32989D !important;
             color: white !important;
             border: none !important;
             border-radius: 0.5rem !important;
@@ -227,24 +223,44 @@
 
     <script>
         $(document).ready(function() {
-            // Inicializar Lucide
-            if(window.lucide) lucide.createIcons();
+        // Inicializar Lucide
+        if(window.lucide) lucide.createIcons();
 
-            // Inicializar DataTables
-            const tabla = $('#miTabla').DataTable({
-                dom: 'rt<"bottom-controls"ip>', // Solo tabla, info y paginación
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-                },
-                pageLength: 10,
-                order: [[0, 'desc']], // Ordenar por fecha descendente
-                drawCallback: function() {
-                    // Mover info y paginación a nuestros contenedores custom
-                    $('#tableInfo').html($('.dataTables_info'));
-                    $('#tablePagination').html($('.dataTables_paginate'));
-                    if(window.lucide) lucide.createIcons(); // Re-init iconos tras paginación
+        // Objeto de traducción local
+        const idiomaEspanol = {
+            processing:     "Procesando...",
+            search:         "Buscar:",
+            lengthMenu:    "Mostrar _MENU_ registros",
+            info:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            infoEmpty:      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            infoFiltered:   "(filtrado de un total de _MAX_ registros)",
+            loadingRecords: "Cargando...",
+            zeroRecords:    "No se encontraron resultados",
+            emptyTable:     "Ningún dato disponible en esta tabla",
+            paginate: {
+                first:      "Primero",
+                previous:   "Anterior",
+                next:       "Siguiente",
+                last:       "Último"
+            }
+        };
+
+        // Inicializar DataTables de forma limpia y nativa
+        const tabla = $('#miTabla').DataTable({
+            // EXPLICACIÓN: 'rt' pinta la tabla. Luego le decimos que use tu ID del footer
+            // y le aplique tus mismas clases de Tailwind para meter la info (i) y la paginación (p)
+            dom: 'rt<"#mis-controles-tabla.px-6.py-4.flex.justify-between.items-center"ip>',
+            language: idiomaEspanol, // El objeto local que ya guardamos antes
+            pageLength: 10,
+            order: [[0, 'desc']],
+            drawCallback: function() {
+                // ¡YA NO MOVER NADA CON JQUERY!
+                // DataTables mantiene sus botones vivos y nunca más van a desaparecer.
+
+                // Solo re-inicializamos los iconos de Lucide
+                if(window.lucide) lucide.createIcons();
                 }
-            });
+        });
 
             // --- BÚSQUEDA CUSTOM ---
             $('#customSearch').on('keyup', function() {

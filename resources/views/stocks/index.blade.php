@@ -16,15 +16,15 @@
             <h1
                 class="text-2xl font-bold bg-gradient-to-r from-[#1B7D8F] via-[#2BA8A0] to-[#245360] text-transparent  bg-clip-text drop-shadow-md  flex items-center gap-2 px-2">
                 Medicamentos en Stock</h1>
-            
+
             <div class="flex gap-4 items-center">
                 <!-- Filtros por servicio -->
                 <form method="GET" action="{{ route('stocks.index') }}" class="flex items-center gap-3">
                     <div class="d-flex align-items-center gap-2 px-3 py-2 rounded-lg" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 2px solid #1B7D8F;">
 
                         <label for="servicio_id" class="font-semibold mb-0" style="color: #1B7D8F;">Filtrar por Servicio:</label>
-                        <select name="servicio_id" id="servicio_id" 
-                            class="form-select" 
+                        <select name="servicio_id" id="servicio_id"
+                            class="form-select"
                             style="border: 2px solid #1B7D8F; border-radius: 8px; min-width: 200px; font-weight: 500;"
                             onchange="this.form.submit()"
                             {{ (count($servicios) == 1 && auth()->user()->servicio_id) ? 'disabled' : '' }}
@@ -94,7 +94,7 @@
                                 <a href="{{ route('stocks.edit', ['stock' => $item->id, 'modo' => 'agregar']) }}" class="btn btn-outline-success btn-sm">
                                     Agregar
                                 </a>
-                                
+
                                 <a href="{{ route('stocks.edit', ['stock' => $item->id, 'modo' => 'extraer']) }}" class="btn btn-outline-danger btn-sm">
                                     Extraer
                                 </a>
@@ -111,8 +111,8 @@
 
             </table>
         </div>
-    </div> 
- </div>      
+    </div>
+ </div>
 @endsection
 @push('scripts')
 <script>
